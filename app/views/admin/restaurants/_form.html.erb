@@ -1,31 +1,55 @@
-<% if @restaurant.errors.any? %>
-  <h2>Error message!</h2>
-  <ul>
-    <% @restaurant.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<div class="container">
+   <div class="row">
+ 
+     <% if @restaurant.errors.any? %>
+       <h4>We have some errors here !</h4>
+       <ul>
+         <% @restaurant.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+       <hr>
     <% end %>
-  </ul>
-<% end %>
 
-<%= form_for [:admin, @restaurant] do |f| %>
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name %>
 
-  <%= f.label :tel, "Tel" %>
-  <%= f.text_field :tel %>
+      <%= form_for [:admin, @restaurant] do |f| %>
+ 
+       <div class="form-group">
+         <%= f.label :name, "Name" %>
+         <%= f.text_field :name, class: "form-control" %>
+       </div>
+  
 
-  <%= f.label :address, "Address" %>
-  <%= f.text_field :address %>
+       <div class="form-group">
+         <%= f.label :tel, "Tel" %>
+         <%= f.text_field :tel, class: "form-control" %>
+       </div>
 
-  <%= f.label :opening_hours, "Opening Hours" %>
-  <%= f.text_field :opening_hours %>
+      <div class="form-group">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
 
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
+      <div class="form-group">
+        <%= f.label :opening_hours, "Opening Hours" %>
+        <%= f.text_field :opening_hours, class: "form-control" %>
+      </div>
 
-  <%= f.label :image, "Photo" %>
-  <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
-  <%= f.file_field :image %>
+      <div class="form-group">
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
 
-  <%= f.submit %>
-<% end %>
+      <div class="form-group">
+        <%= f.label :image, "Photo" %>
+        <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
