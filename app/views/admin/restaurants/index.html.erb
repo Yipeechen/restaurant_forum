@@ -1,19 +1,19 @@
 <div class="container">
  
-   <h1>餐廳後台</h1>
+   <h1 class="text-center">餐廳後台</h1>
  
    <div class="row">
  
      <div class="col-md-12">
  
        <div>
-         <%= link_to 'New Restaurant', new_admin_restaurant_path, class: "btn btn-primary" %>
+         <%= link_to '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i> New Restaurant'.html_safe, new_admin_restaurant_path, class: "btn btn-success center-block" %>
        </div>
        <br>
        <table class="table table-striped table-bordered">
          <thead>
            <tr>
-             <th>#</th>
+             <th>No.</th>
              <th>Name</th>
              <th>#</th>
            </tr>
@@ -24,9 +24,9 @@
              <th scope="row"><%= restaurant.id %></th>
              <td><%= restaurant.name %></td>
              <td>
-               <%= link_to 'Show', admin_restaurant_path(restaurant) %>
-               <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
-               <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"} %>
+              <%= link_to '<i class="glyphicon glyphicon-file" aria-hidden="true" style="color:gray"></i> Show'.html_safe, admin_restaurant_path(restaurant) %> 
+               <%= link_to '<i class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:gray"></i> Edit'.html_safe, edit_admin_restaurant_path(restaurant)  %>
+               <%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true" style="color:gray" ></i> Delete'.html_safe, admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"}  %>
              </td>
            </tr>
            <% end %>
