@@ -13,3 +13,19 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.photo  {
+  background-color: whitesmoke;
+  border-radius: 20px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px 10px;
+  float: left;
+}
+
+.section{
+    margin-bottom: 3em;
+    line-height: 1;
+}
+
+
