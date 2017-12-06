@@ -20,9 +20,8 @@
                 <div>
                   <%= image_tag restaurant.image, class: ' img-rounded' , width:300 ,height:200%>
                 </div>
-                               <span class="mark label label-warning navbar-right"><%= restaurant.category.name %></span>
+                <span class="mark label label-warning navbar-right"><%= restaurant.category.name %></span>
                 <h3 style="color:slategray"  ><%= restaurant.name %></h3> 
-
                 <p><%= truncate restaurant.description , length:140 %></p>
               <% end %>
               <div>
