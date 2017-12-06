@@ -14,17 +14,22 @@
         <div class="row">
          <% @restaurants.each do |restaurant| %>
           <div class="col-xs-12 col-sm-6 col-md-4 ">
+
             <div class="photo">
               <%= link_to admin_restaurant_path(restaurant) do %>
                 <div>
                   <%= image_tag restaurant.image, class: ' img-rounded' , width:300 ,height:200%>
                 </div>
-                <h3 style="color:slategray" ><%= restaurant.name %></h3>
+                               <span class="mark label label-warning navbar-right"><%= restaurant.category.name %></span>
+                <h3 style="color:slategray"  ><%= restaurant.name %></h3> 
+
                 <p><%= truncate restaurant.description , length:140 %></p>
               <% end %>
               <div>
                 <button type="button" class="btn btn-default"><%= link_to '<i class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:gray"></i> 編輯'.html_safe, edit_admin_restaurant_path(restaurant) %></button>
                 <button type="button" class="btn btn-default"><%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true" style="color:gray" ></i> 刪除'.html_safe, admin_restaurant_path(restaurant), method: :delete, data: {confirm: "你確定要刪除嗎？"} %></button>
+
+
               </div>
             </div>
           </div>
