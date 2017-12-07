@@ -32,7 +32,8 @@
           <tr>
             <th scope="row"><%= category.id %></th>
             <td><%= category.name %></td>
-            <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td>
+            <td><%= link_to 'Edit', admin_categories_path(id: category.id) %>
+            <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: "Are you sure?"} %></td>
           </tr>
           <% end %>
         </tbody>
