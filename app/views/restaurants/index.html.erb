@@ -1,1 +1,23 @@
-<h1>餐廳前台</h1>
+<div class="container">
+  <h1 class="text-center">餐廳前台</h1>
+  <div class="row">
+    
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="restaurant-item">
+          <%= image_tag restaurant.image, class: "img-responsive center-block img-rounded" %>
+          <div class="caption">
+            <h3 class="title"><%= link_to restaurant.name, restaurant_path(restaurant) %>
+              <small class="navbar-right tag"><span class="label label-success"><%= restaurant.category.name %></span></small></h3>
+            <p><%= truncate(restaurant.description, length: 80) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+      
+    <div class="text-center">
+      <%= paginate @restaurants %>
+    </div>
+      
+  </div>
+</div>
