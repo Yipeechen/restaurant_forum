@@ -1,5 +1,11 @@
 <div class="container">
-  <h1 class="text-center">餐廳前台</h1>
+  <ul class="nav nav-pills nav-pills-center">
+    <li role="presentation" class="active"><%= link_to "全部餐廳", root_path %></li>
+    <% @categories.each do |category| %>
+      <li role="presentation"><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+  <br>
   <div class="row">
     
     <% @restaurants.each do |restaurant| %>
@@ -8,7 +14,7 @@
           <%= image_tag restaurant.image, class: "img-responsive center-block img-rounded" %>
           <div class="caption">
             <h3 class="title"><%= link_to restaurant.name, restaurant_path(restaurant) %>
-              <small class="navbar-right tag"><span class="label label-success"><%= restaurant.category.name %></span></small></h3>
+              <small class="navbar-right tag"><span class="label label-warning"><%= restaurant.category.name %></span></small></h3>
             <p><%= truncate(restaurant.description, length: 80) %></p>
           </div>
         </div>
