@@ -22,7 +22,8 @@
             <div class="photo">
               <%= link_to admin_restaurant_path(restaurant) do %>
                 <div>
-                  <%= image_tag restaurant.image, class: ' img-rounded' , width:300 ,height:200%>
+                  <%= image_tag restaurant.image, class: ' img-rounded' , width:300 ,height:200 if restaurant.image?%>
+                  <%= image_tag "http://via.placeholder.com/300x200", class: "img-responsive center-block img-rounded"  unless restaurant.image?%> 
                 </div>
                 <h3 style="color:slategray"  ><%= restaurant.name %></h3> 
                 <p><%= truncate restaurant.description , length:140 %></p>
