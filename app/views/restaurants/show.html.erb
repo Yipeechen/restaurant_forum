@@ -29,13 +29,19 @@
 
     <% @restaurant.comments.each do |comment| %>
     <div>
-      <h4><%= comment.user.email.split("@").first %></h4>
+      <h4><%= comment.user.email.split("@").first %>
+        <% if current_user.admin? %>
+          <%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true"></i> 刪除'.html_safe, restaurant_comment_path(@restaurant, comment), method: :delete ,class: "navbar-right btn btn-default btn-sm" %>
+        <% end %>
+      </h4>
       <p><%= simple_format comment.content %></p>
       <p class="text-muted">
-        <em>- <%= time_ago_in_words(comment.created_at) %> ago </em>
+        <em>- <%= time_ago_in_words(comment.created_at) %> ago</em>
       </p>
+
     </div>
     <hr>
+
     <% end %>
 
     <%= form_for [@restaurant, @comment] do |f| %>
@@ -55,3 +61,4 @@
       <li><%= link_to 'Back to index', restaurants_path %></li>
     </ul>
   </nav>
+
