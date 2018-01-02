@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="page-header">
+
+        <div class="col-md-3 col-sm-4">
+
+          <div class="text-center">
+            <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+          </div>
+        </div>
+
+        <div class="col-md-9 col-sm-8">
+          <% if @user.email == current_user.email %>
+            <%= link_to '<i class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:gray"></i> 修改'.html_safe, edit_user_path(@user), class: "navbar-right btn btn-default mark" %>
+          <% end %>
+          <h2><%= @user.name %></h2>
+          <p><strong><%= @user.email %></strong></p>
+          <div><%= simple_format @user.intro %></div>
+
+        </div>
+        <div class="clearfix"></div>
+
+      </div>
+
+      <br>
+
+
+
+    </div>
+  </div>
+</div>
