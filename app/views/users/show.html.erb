@@ -6,7 +6,8 @@
         <div class="col-md-3 col-sm-4">
 
           <div class="text-center">
-            <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+            <%= image_tag @user.avatar ,class:"img-responsive img-rounded" if @user.avatar?%>
+             <%= image_tag "http://via.placeholder.com/350x350", class: "img-responsive img-rounded"  unless @user.avatar?%>
           </div>
         </div>
 
