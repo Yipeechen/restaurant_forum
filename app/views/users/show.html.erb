@@ -26,7 +26,14 @@
 
       <br>
 
+      <div>
+        <div>
+          <% @commented_restaurants.each do |restaurant| %>
+            <h5><%= restaurant.name %></h5>
 
+          <% end %>
+        </div>
+      </div>
 
     </div>
   </div>
