@@ -33,7 +33,7 @@
           <%= image_tag "http://via.placeholder.com/64x64" %>
         </div>
         <div class="media-body">
-          <h4 class="media-heading"><%= comment.user.email.split("@").first %>
+          <h4 class="media-heading"><%= comment.user.name %>
             <% if current_user.admin? %>
               <%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true"></i> 刪除'.html_safe, restaurant_comment_path(@restaurant, comment), method: :delete ,class: "navbar-right btn btn-default btn-sm mark" %>
             <% end %>
