@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
   </head>
 
   <body>
@@ -67,9 +69,20 @@
 
     <%= yield %>
 
-    <footer class='page-footer'>
-      <div>
-        <p class="text-right" style="color: gray"> © 2017  Restaurant Forum </p>
+    <!-- Footer -->
+    <footer id="footer" class="page-footer">
+      <div class="container">
+        <div class="footer-content">
+          <p style="color: gray">&copy; 2017  Restaurant Forum | All Rights Reserved. </p>
+          <div class="footer-social-icon">
+            <ul>
+                <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </ul>
+          </div>
+        </div>
       </div>
     </footer>
   </body>
