@@ -1,22 +1,50 @@
-<h1>餐廳最新動態</h1>
-
-<div>
-  <h3>最新餐廳</h3>
-
-  <% @recent_restaurants.each do |restaurant| %>
-  <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
-  <span class="label label-warning"><%= restaurant.category.name %></span>
-  <p><%= restaurant.description %></p>
-  <hr>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to "首頁", root_path %>
+      </li>
+      <li role="presentation"  class="active">
+        <%= link_to "最新動態", feeds_restaurants_path %>
+      </li>
+    </ul>
+  </div>
 </div>
-
-<div>
-  <h3>最新評論</h3>
-  <% @recent_comments.each do |comment| %>
-  <h4><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %></h4>
-  <p><%= comment.content %></p>
-  <p>by <%= link_to comment.user.name, user_path(comment.user) %></p>
-  <hr>
-  <% end %>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h1 class="text-center">餐廳最新動態</h1>
+      <hr>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">最新餐廳 <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span></div>
+          <div class="panel-body">
+            <% @recent_restaurants.each do |restaurant| %>
+              <div>
+                <h4><%= link_to restaurant.name, restaurant_path(restaurant) %> <span class="label label-warning navbar-right"><%= restaurant.category.name %></span></h4>
+                <p><%= truncate(restaurant.description, length:80) %></p>
+                <hr>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">最新評論 <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
+          <div class="panel-body">
+            <% @recent_comments.each do |comment| %>
+              <div>
+                <h4><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %> <span class="label label-warning navbar-right"><%= comment.restaurant.category.name %></span></h4>
+                <p><%= comment.content %></p>
+                <p>by <%= link_to comment.user.name, user_path(comment.user) %></p>
+                <hr>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

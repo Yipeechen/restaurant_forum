@@ -1,5 +1,19 @@
 <div class="container">
   <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to "首頁", root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "最新動態", feeds_restaurants_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
   <ul class="nav nav-pills nav-pills-center">
     <li role="presentation" class="active"><%= link_to "全部餐廳", root_path %></li>
     <% @categories.each do |category| %>
