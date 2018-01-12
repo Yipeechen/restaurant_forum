@@ -1,0 +1,22 @@
+<h1>餐廳最新動態</h1>
+
+<div>
+  <h3>最新餐廳</h3>
+
+  <% @recent_restaurants.each do |restaurant| %>
+  <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+  <span class="label label-warning"><%= restaurant.category.name %></span>
+  <p><%= restaurant.description %></p>
+  <hr>
+  <% end %>
+</div>
+
+<div>
+  <h3>最新評論</h3>
+  <% @recent_comments.each do |comment| %>
+  <h4><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %></h4>
+  <p><%= comment.content %></p>
+  <p>by <%= link_to comment.user.name, user_path(comment.user) %></p>
+  <hr>
+  <% end %>
+</div>
