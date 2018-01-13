@@ -21,6 +21,8 @@
       <blockquote>
        <%= simple_format @restaurant.description %>
      </blockquote>
+      <hr>
+      <%= link_to '<i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i> Dashboard'.html_safe, dashboard_restaurant_path(@restaurant), class: "btn btn-default btn-sm" %>
      </div>
 
      <div class="clearfix"></div>
