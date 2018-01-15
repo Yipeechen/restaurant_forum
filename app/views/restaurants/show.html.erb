@@ -23,6 +23,8 @@
      </blockquote>
       <hr>
       <%= link_to '<i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i> Dashboard'.html_safe, dashboard_restaurant_path(@restaurant), class: "btn btn-default btn-sm" %>
+      <%= link_to '<i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i> 收藏'.html_safe, favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-default btn-sm" %>
+      <%= link_to '<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i> 取消收藏'.html_safe, unfavorite_restaurant_path(@restaurant), method: :post, class: "btn btn-default btn-sm" %>
      </div>
 
      <div class="clearfix"></div>
