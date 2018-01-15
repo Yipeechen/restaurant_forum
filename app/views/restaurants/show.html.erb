@@ -23,7 +23,7 @@
      </blockquote>
       <hr>
       <%= link_to '<i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i> Dashboard'.html_safe, dashboard_restaurant_path(@restaurant), class: "btn btn-default btn-sm" %>
-      <%= link_to '<i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i> 收藏'.html_safe, favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-default btn-sm" %>
+      <%= link_to '<i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i> 收藏'.html_safe, favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-warning btn-sm" %>
       <%= link_to '<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i> 取消收藏'.html_safe, unfavorite_restaurant_path(@restaurant), method: :post, class: "btn btn-default btn-sm" %>
      </div>
 
@@ -37,7 +37,7 @@
           <%= image_tag "http://via.placeholder.com/64x64" %>
         </div>
         <div class="media-body">
-          <h4 class="media-heading"><%= comment.user.name %>
+          <h4 class="media-heading"><%= link_to comment.user.name, user_path(comment.user) %>
             <% if current_user.admin? %>
               <%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true"></i> 刪除'.html_safe, restaurant_comment_path(@restaurant, comment), method: :delete ,class: "navbar-right btn btn-default btn-sm mark" %>
             <% end %>
