@@ -24,8 +24,11 @@
       <hr>
       <%= link_to '<i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i> Dashboard'.html_safe, dashboard_restaurant_path(@restaurant), class: "btn btn-default btn-sm" %>
       <%= render partial: "shared/favorite", locals: {restaurant: @restaurant} %>
-      <%= link_to '<i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>'.html_safe, like_restaurant_path(@restaurant), method: :post, class: "btn btn-link btn-lg", style:'color: blue ' %>
-      <%= link_to '<i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>'.html_safe, unlike_restaurant_path(@restaurant), method: :post, class: "btn btn-link btn-lg", style:'color: gray ' %>
+      <% if @restaurant.is_liked?(current_user) %>
+        <%= link_to '<i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>'.html_safe, unlike_restaurant_path(@restaurant), method: :post, class: "btn btn-link btn-lg", style:'color: gray ' %>
+      <% else %>
+        <%= link_to '<i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>'.html_safe, like_restaurant_path(@restaurant), method: :post, class: "btn btn-link btn-lg", style:'color: blue ' %>
+      <% end %>
      </div>
 
      <div class="clearfix"></div>
