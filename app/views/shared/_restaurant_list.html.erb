@@ -10,6 +10,7 @@
               <h3 class="title"><%= restaurant.name %>
                 <small class="navbar-right tag"><span class="label label-warning"><%= restaurant.category.name %></span></small></h3>
               <p style="color:black"><%= truncate(restaurant.description, length: 80) %></p>
+              <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
             </div>
           </div>
         <% end %>
