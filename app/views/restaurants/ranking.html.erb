@@ -1,10 +1,49 @@
-<h1>Top 10 人氣餐廳 <small>(收藏數最高)</small></h1>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to "首頁", root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "最新動態", feeds_restaurants_path %>
+      </li>
+      <li role="presentation"  class="active">
+        <%= link_to 'TOP10人氣餐廳', ranking_restaurants_path %>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<% @restaurants.each do |restaurant| %>
-   <%= image_tag restaurant.image %>
-   <h4><%= restaurant.name %></h4>
-   <span>收藏數：<%= restaurant.favorites_count %></span>
-   <p><%= truncate(restaurant.description, length: 200) %></p>
-   <%= link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary" %>
-   <%= render partial: 'shared/favorite', locals: { restaurant: restaurant } %>
- <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+    <h1 class="text-center">Top 10 人氣餐廳 <small>(收藏數最高)</small></h1>
+    <hr>
+
+    <% @restaurants.each do |restaurant| %>
+      <div class="ranking-item">
+        <%= link_to restaurant_path(restaurant) do %>
+        <div class="col-md-3">
+          <%= image_tag restaurant.image, class: "img-responsive center-block img-rounded" if restaurant.image?%>
+          <%= image_tag "http://via.placeholder.com/240x160", class: "img-responsive center-block img-rounded"  unless restaurant.image?%> 
+        </div>
+        <% end %>
+        <div class="col-md-9">
+          <h4>
+            <%= restaurant.name %>
+            <span class="label label-warning navbar-right"><%= restaurant.category.name %></span>
+          </h4>
+          <p><%= truncate(restaurant.description, length: 200) %></p>
+          <div>
+            <span class="badge" style=" background-color: lightpink"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i> <%= restaurant.favorites_count %></span>
+            <%= render partial: 'shared/favorite', locals: { restaurant: restaurant } %>
+            <%= link_to '<i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i> 查看'.html_safe, restaurant_path(restaurant), class: "btn btn-default btn-sm" %>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <hr>
+    <% end %>
+    </div>
+  </div>
+</div>
