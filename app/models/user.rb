@@ -20,6 +20,10 @@ class User < ApplicationRecord
   # 「使用者追蹤很多使用者」
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
+
+  def following?(user)
+    self.followings.include?(user)
+  end
   
   def admin?
     self.role == "admin"
