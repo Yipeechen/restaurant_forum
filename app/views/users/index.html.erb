@@ -1,10 +1,41 @@
-<ul>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to "首頁", root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "最新動態", feeds_restaurants_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'TOP10人氣餐廳', ranking_restaurants_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to '美食達人', users_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1 class="text-center">美食達人</h1>
+      </div>
+    </div>
 
-  <% @users.each do |user| %>
-    <li>
-      <%= user.name %>
-      <%= render partial: "shared/follow", locals: {user: user} %>
-    </li>
-  <% end %>
-
-</ul
+      <% @users.each do |user| %>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
+          <%= link_to user_path(user) do %>
+            <%= image_tag(user.avatar, class: "img-rounded") if user.avatar? %>
+            <%= image_tag "http://via.placeholder.com/128x128", class: "img-rounded" unless user.avatar? %>
+            <h4>
+              <%= user.name if user.name? %>
+              <%= user.email.split("@").first unless user.name? %>
+            </h4>
+          <% end %>
+            <%= render partial: "shared/follow", locals: {user: user} %>
+        </div>
+      <% end %>
+  </div>
+</div>

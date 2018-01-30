@@ -1,7 +1,7 @@
 <% if user != current_user %>
   <% if current_user.following?(user) %>
-    <%= link_to 'Unfollow', followship_path(user), method: :delete %>
+    <%= link_to ' 取消追蹤', followship_path(user), method: :delete, class: "btn btn-default btn-sm" %>
   <% else %>
-    <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
+    <%= link_to '<i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> 追蹤'.html_safe, followships_path(following_id: user), method: :post, class: "btn btn-warning btn-sm" %>
   <% end %>
 <% end %>
