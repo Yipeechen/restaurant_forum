@@ -25,8 +25,14 @@
       <span class="badge" style=" background-color: lightpink"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i> <%= @restaurant.favorites_count %></span>
       <%= render partial: "shared/favorite", locals: {restaurant: @restaurant} %>
       <%= render partial: "shared/like", locals: {restaurant: @restaurant} %>
-      <%= link_to '<i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i> Dashboard'.html_safe, dashboard_restaurant_path(@restaurant), class: "btn btn-default btn-sm" %>
+
+      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#ModalCenter">
+        <i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i> Dashboard
+      </button>
+
      </div>
+
+      <%= render partial: "shared/dashboard", locals: {restaurant: @restaurant} %>
 
      <div class="clearfix"></div>
 

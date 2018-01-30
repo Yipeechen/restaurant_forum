@@ -12,9 +12,12 @@
               <p style="color:black"><%= truncate(restaurant.description, length: 80) %></p>
               <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
               <%= render partial: "shared/like", locals: {restaurant: restaurant} %>
-              <%= link_to '<i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i>'.html_safe, dashboard_restaurant_path(restaurant), class: "btn btn-link btn-lg" %>
+              <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#ModalCenter">
+                <i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i>
+              </button>
             </div>
           </div>
+          <%= render partial: "shared/dashboard", locals: {restaurant: restaurant} %>
         <% end %>
       </div>
     <% end %>
