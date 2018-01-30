@@ -5,19 +5,19 @@
       <h4><span class="label label-warning"><%= @restaurant.category.name %></span></h4>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-5">
        <%= image_tag @restaurant.image, class: "img-responsive center-block" if @restaurant.image?%>
-      <%= image_tag "http://via.placeholder.com/360x240", class: "img-responsive center-block img-rounded"  unless @restaurant.image?%> 
+      <%= image_tag "http://via.placeholder.com/460x305", class: "img-responsive center-block img-rounded"  unless @restaurant.image?%> 
        <br>
-       <div class="well">
-         <dl class="dl-horizontal">
-           <dt>Opening Hour:</dt> <dd> <%= @restaurant.opening_hours %></dd>
-           <dt>Tel:</dt> <dd><%= @restaurant.tel %></dd>
-           <dt>Address:</dt> <dd><%= @restaurant.address %></dd>
+       <div class="well ">
+         <dl class="row">
+           <dt class="col-sm-4"><i class="glyphicon glyphicon-time" aria-hidden="true"></i> 營業時間：</dt><dd class="col-sm-8"><%= @restaurant.opening_hours %></dd>
+           <dt class="col-sm-4"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i> 店家電話：</dt><dd class="col-sm-8"><%= @restaurant.tel %></dd>
+           <dt class="col-sm-4"><i class="glyphicon glyphicon-home" aria-hidden="true"></i> 店家地址：</dt><dd class="col-sm-8"><%= @restaurant.address %></dd>
          </dl>
        </div>
      </div>
-     <div class="col-md-8">
+     <div class="col-md-7">
       <blockquote>
        <%= simple_format @restaurant.description %>
      </blockquote>
