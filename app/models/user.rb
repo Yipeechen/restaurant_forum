@@ -26,9 +26,13 @@ class User < ApplicationRecord
   has_many :followers, through: :inverse_followships, source: :user
 
   #「使用者新增很多朋友」
-    has_many :friendships,dependent: :destroy
-    has_many :friends, through: :friendships
+  has_many :friendships,dependent: :destroy
+  has_many :friends, through: :friendships
 
+  #「使用者的朋友邀請」
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key:"friend_id"
+  has_many :inviters, through: :inverse_friendships, source: :user
+    
   def friend_receiver?(user)
     self.friends.include?(user)
   end
