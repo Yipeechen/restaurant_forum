@@ -23,12 +23,13 @@
           <ul class="list-unstyled list-inline">
             <li><strong><%= @commented_restaurants.count %> 已評論餐廳 ｜</strong></li>
             <li><strong><%= @favorited_restaurants.count %> 已收藏餐廳 ｜</strong></li>
-            <li><strong><%= @followings.count %> followings ｜</strong></li>
-            <li><strong><%= @followers.count %> followers </strong></li>
+            <li><strong><%= @followings.count %> Followings ｜</strong></li>
+            <li><strong><%= @followers.count %> Followers ｜</strong></li>
+            <li><strong><%= link_to 'Friend List', friend_list_user_path(@user), class: "btn btn-link " %></strong></li>
           </ul>
           
           <div><%= simple_format @user.intro %></div>
-
+          
         </div>
         <div class="clearfix"></div>
 
@@ -39,7 +40,7 @@
       <div class="col-md-4">
         <div class="panel panel-warning">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong><%= @followings.count %></strong> followings</h3>
+            <h3 class="panel-title"><strong><%= @followings.count %></strong> Followings</h3>
           </div>
 
           <ul class="list-group">
@@ -57,7 +58,7 @@
 
         <div class="panel panel-warning">
           <div class="panel-heading">
-            <h3 class = "panel-title"><strong><%= @followers.count %></strong> followers</h3>
+            <h3 class = "panel-title"><strong><%= @followers.count %></strong> Followers</h3>
           </div>
           <ul class="list-group">
             <% @followers.each do |follower| %>

@@ -32,9 +32,14 @@ class User < ApplicationRecord
   #「使用者的朋友邀請」
   has_many :inverse_friendships, class_name: "Friendship", foreign_key:"friend_id"
   has_many :inviters, through: :inverse_friendships, source: :user
-    
+
   def friend_receiver?(user)
     self.friends.include?(user)
+  end
+
+  def all_friends
+    friends = self.friends + self.inviters
+    return friends.uniq
   end
 
   def following?(user)
