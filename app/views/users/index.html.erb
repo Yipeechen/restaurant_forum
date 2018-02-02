@@ -35,6 +35,7 @@
             </h4>
           <% end %>
             <%= render partial: "shared/follow", locals: {user: user} %>
+            <%= link_to '加入好友' , friendships_path(friend_id: user), method: :post %>
         </div>
       <% end %>
   </div>
