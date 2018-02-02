@@ -15,8 +15,18 @@
           <% if @user.email == current_user.email %>
             <%= link_to '<i class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:gray"></i> 修改'.html_safe, edit_user_path(@user), class: "navbar-right btn btn-default mark" %>
           <% end %>
-          <h2><%= @user.name %></h2>
+          <h2>
+            <%= @user.name if @user.name? %>
+            <%= @user.email.split("@").first unless @user.name? %>
+          </h2>
           <p><strong><%= @user.email %></strong></p>
+          <ul class="list-unstyled list-inline">
+            <li><strong><%= @commented_restaurants.count %> 已評論餐廳 ｜</strong></li>
+            <li><strong><%= @favorited_restaurants.count %> 已收藏餐廳 ｜</strong></li>
+            <li><strong><%= @followings.count %> followings ｜</strong></li>
+            <li><strong><%= @followers.count %> followers </strong></li>
+          </ul>
+          
           <div><%= simple_format @user.intro %></div>
 
         </div>
@@ -26,27 +36,85 @@
 
       <br>
 
-      <div class ="panel panel-default">
-        <div class ="panel-heading">
-           <h3 class="panel-title"><%= @commented_restaurants.count %> 間已評論餐廳</h3>
-        </div>
-        <div class="panel-body">
-          <% @commented_restaurants.each do |restaurant| %>
-            <div class="line-disappear my-restaurant">
-              <%= link_to restaurant_path(restaurant) do %>
-                <div class="my-restaurant">
-                  <div>
-                    <%= image_tag restaurant.image, class:"img-responsive img-rounded" if restaurant.image? %>
-                      <%= image_tag "http://via.placeholder.com/120x80", class:"img-responsive img-rounded" unless restaurant.image? %>
-                  </div>
-                  <h5><%= restaurant.name %></h5>
-                </div>
+      <div class="col-md-4">
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong><%= @followings.count %></strong> followings</h3>
+          </div>
+
+          <ul class="list-group">
+            <% @followings.each do |following| %>
+            <li class="list-group-item">
+              <%= link_to user_path(following) do %>
+              <%= image_tag(following.avatar, height: 30, width: 30, class: "img-circle") if following.avatar?%>
+              <%= image_tag "http://via.placeholder.com/30x30", class:"img-circle" unless following.avatar? %>
+              <%= following.name %>
               <% end %>
-            </div>
-          <% end %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class = "panel-title"><strong><%= @followers.count %></strong> followers</h3>
+          </div>
+          <ul class="list-group">
+            <% @followers.each do |follower| %>
+            <li class="list-group-item">
+              <%= link_to user_path(follower) do %>
+              <%= image_tag(follower.avatar, height:30, width:30, class: "img-circle") if follower.avatar? %>
+              <%= image_tag "http://via.placeholder.com/30x30", class:"img-circle" unless follower.avatar? %>
+              <%= follower.name %>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
         </div>
       </div>
 
+      <div class="col-md-8">
+        <div class ="panel panel-warning">
+          <div class ="panel-heading">
+             <h3 class="panel-title"><%= @commented_restaurants.count %> 間已評論餐廳</h3>
+          </div>
+          <div class="panel-body">
+            <% @commented_restaurants.each do |restaurant| %>
+              <div class="line-disappear my-restaurant">
+                <%= link_to restaurant_path(restaurant) do %>
+                  <div class="my-restaurant">
+                    <div>
+                      <%= image_tag restaurant.image, class:"img-responsive img-rounded" if restaurant.image? %>
+                      <%= image_tag "http://via.placeholder.com/120x80", class:"img-responsive img-rounded" unless restaurant.image? %>
+                    </div>
+                    <h5><%= restaurant.name %></h5>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @favorited_restaurants.count %> 間已收藏餐廳</h3>
+          </div>
+          <div class="panel-body">
+            <% @favorited_restaurants.each do |restaurant| %>
+              <div class="line-disappear my-restaurant">
+                <%= link_to restaurant_path(restaurant) do %>
+                  <div class="my-restaurant">
+                    <div>
+                      <%= image_tag restaurant.image, class:"img-responsive img-rounded" if restaurant.image? %>
+                      <%= image_tag "http://via.placeholder.com/120x80", class:"img-responsive img-rounded" unless restaurant.image? %>
+                    </div>
+                    <h5><%= restaurant.name %></h5>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
