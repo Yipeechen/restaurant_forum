@@ -27,8 +27,11 @@ class User < ApplicationRecord
 
   #「使用者新增很多朋友」
     has_many :friendships,dependent: :destroy
-    has_many :friend_receivers, through: :friendships
+    has_many :friends, through: :friendships
 
+  def friend_receiver?(user)
+    self.friends.include?(user)
+  end
 
   def following?(user)
     self.followings.include?(user)
