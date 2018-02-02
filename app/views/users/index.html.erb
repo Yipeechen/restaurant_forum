@@ -36,6 +36,7 @@
           <% end %>
             <%= render partial: "shared/follow", locals: {user: user} %>
             <%= link_to '加入好友' , friendships_path(friend_id: user), method: :post %>
+            <%= link_to '取消好友' , friendship_path(user), method: :delete %>
         </div>
       <% end %>
   </div>
