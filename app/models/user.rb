@@ -25,6 +25,11 @@ class User < ApplicationRecord
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
+  #「使用者新增很多朋友」
+    has_many :friendships,dependent: :destroy
+    has_many :friend_receivers, through: :friendships
+
+
   def following?(user)
     self.followings.include?(user)
   end
