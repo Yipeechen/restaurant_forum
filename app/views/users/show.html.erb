@@ -25,7 +25,8 @@
             <li><strong><%= @favorited_restaurants.count %> 已收藏餐廳 ｜</strong></li>
             <li><strong><%= @followings.count %> Followings ｜</strong></li>
             <li><strong><%= @followers.count %> Followers ｜</strong></li>
-            <li><strong><%= link_to 'Friend List', friend_list_user_path(@user), class: "btn btn-link " %></strong></li>
+            <li><strong><%= link_to 'Friend List', friend_list_user_path(@user), class: "btn btn-link " %> ｜</strong></li>
+            <li><%= render partial: "shared/friend", locals: {user: @user} %></li>
           </ul>
           
           <div><%= simple_format @user.intro %></div>
