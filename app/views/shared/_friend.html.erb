@@ -1,6 +1,8 @@
 <% if user != current_user %>
   <% if current_user.friend_receiver?(user) %>
     <%= link_to '取消好友' , friendship_path(user), method: :delete, class: "btn btn-default btn-sm" %>
+  <% elsif current_user.unconfirm_friend?(user) %>
+    <%= link_to "取消邀請", friendship_path(user), class: "btn btn-danger btn-sm", method: :delete %>
   <% else %>
     <%= link_to '加入好友' , friendships_path(friend_id: user), method: :post, class: "btn btn-warning btn-sm" %>
   <% end %>

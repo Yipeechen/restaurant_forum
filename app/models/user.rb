@@ -26,15 +26,24 @@ class User < ApplicationRecord
   has_many :followers, through: :inverse_followships, source: :user
 
   #「使用者新增很多朋友」
-  has_many :friendships,dependent: :destroy
+  has_many :friendships, -> {where status: true}, dependent: :destroy
   has_many :friends, through: :friendships
 
   #「使用者的朋友邀請」
-  has_many :inverse_friendships, class_name: "Friendship", foreign_key:"friend_id"
+  has_many :inverse_friendships, -> {where status: true}, class_name: "Friendship", foreign_key:"friend_id"
   has_many :inviters, through: :inverse_friendships, source: :user
 
+  has_many :unconfirm_friendships, -> {where status: false}, class_name: "Friendship", dependent: :destroy
+  has_many :unconfirm_friends, through: :unconfirm_friendships, source: :friend
+  has_many :request_friendships, -> {where status: false}, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
+  has_many :request_friends, through: :request_friendships, source: :user
+
   def friend_receiver?(user)
-    self.friends.include?(user)
+    self.friends.include?(user) || self.inviters.include?(user)
+  end
+
+  def unconfirm_friend?(user)
+    self.unconfirm_friends.include?(user)
   end
 
   def all_friends

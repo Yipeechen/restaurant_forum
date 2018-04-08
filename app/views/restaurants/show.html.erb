@@ -44,7 +44,11 @@
           <%= image_tag "http://via.placeholder.com/64x64" %>
         </div>
         <div class="media-body">
-          <h4 class="media-heading"><%= link_to comment.user.name, user_path(comment.user) %>
+          <h4 class="media-heading">
+            <%= link_to user_path(comment.user) do %>
+              <%= comment.user.name if comment.user.name? %>
+              <%= comment.user.email.split("@").first unless comment.user.name? %>
+            <% end %>
             <% if current_user.admin? %>
               <%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true"></i> 刪除'.html_safe, restaurant_comment_path(@restaurant, comment), method: :delete ,class: "navbar-right btn btn-default btn-sm mark" %>
             <% end %>

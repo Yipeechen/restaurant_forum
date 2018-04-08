@@ -29,7 +29,12 @@ Rails.application.routes.draw do
   end
   
   resources :followships, only: [:create, :destroy]
-  resources :friendships, only: [:create, :destroy]
+  resources :friendships, only: [:create, :destroy]  do
+    member do
+      post :confirm
+      delete :reject
+    end
+  end
 
   resources :categories, only: :show
   root "restaurants#index"
