@@ -1,49 +1,61 @@
+<%# FB Button setting - JS SDK %>
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.1&appId=232530407449902&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
 <section class="section ">
   <div class="container login">
     <div class="col-md-4 col-md-offset-4">
 
- <nav aria-label>
-    <ul class="pager">    
+      <nav aria-label>
+        <ul class="pager">    
 
-<h2>使用帳號登入</h2>
-</br>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-   
-    <div class="input-group">
-      <div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-       <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-       </div>
-    </div>
-  <br>
-  <div class="field">
-    <div class="input-group">
-      <div class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-      </div>
-  </div>
+          <h2>使用帳號登入</h2>
+          </br>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+    
+              <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+                <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+              </div>
+            </div>
+            <br>
+            <div class="field">
+              <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+              </div>
+            </div>
+            <br>
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
 
-  <br>
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+            </br>
+            <li><%= f.submit "登入" %></li>
+            <%# FB Button setting %>
+            <br>
+            <%= link_to user_facebook_omniauth_authorize_path  do %>
+              <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+            <% end %>
+          <% end %>
+        </ul>
+      </nav>
 
-   <style>
-    input {
-    border-radius: 20px;
-    padding: 5px 30px;
-    }
-  </style>
-  </br>
-       <li><%= f.submit "登入" %></li>
-    </ul>
-  </nav>
-
-<% end %>
-<%= render "devise/shared/links" %>
-</div>    
+      
+      <%= render "devise/shared/links" %>
+    </div>    
   </div>
 </section>

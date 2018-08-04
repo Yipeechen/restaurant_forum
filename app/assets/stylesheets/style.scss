@@ -127,3 +127,14 @@ a .line-disappear {
  .list-group-item img{
   margin-right: 15px;
  }
+
+ // ==================  LOGIN BUTTON ================
+ li > input {
+  border-radius: 20px;
+  padding: 5px 30px;
+}
+
+// ==================  FB LOGIN BUTTON ================
+ .fb-login-button {
+  margin: 25px auto;
+ }
